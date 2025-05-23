@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>GGZA Invent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="login-container" class="panel">
+    <h1>GGZA Invent</h1>
+    <h2>Inicio de sesión</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Iniciar sesión</button>
+    <p id="login-error" class="error"></p>
+  </div>
+
+  <!-- Panel administrador -->
+  <div id="admin-panel" class="hidden panel">
+    <h2 id="admin-welcome">Bienvenido admin</h2>
+    <button onclick="logout()">Cerrar sesión</button>
+
+    <section>
+      <h3>Crear usuario trabajador</h3>
+      <input id="new-username" placeholder="Nuevo usuario">
+      <input id="new-password" placeholder="Contraseña">
+      <button onclick="crearUsuario()">Crear usuario</button>
+    </section>
+
+    <section>
+      <h3>Subir contenido</h3>
+      <textarea id="admin-content" rows="3" placeholder="Contenido visible para trabajadores"></textarea>
+      <button onclick="subirContenido()">Subir contenido</button>
+    </section>
+
+    <section>
+      <h3>Agregar producto</h3>
+      <input id="product-name" placeholder="Nombre del producto">
+      <input id="product-qty" type="number" placeholder="Cantidad">
+      <input id="product-price" type="number" step="0.01" placeholder="Precio">
+      <input id="product-category" placeholder="Categoría">
+      <input id="product-image" type="file">
+      <button onclick="agregarProducto()">Agregar producto</button>
+    </section>
+
+    <section>
+      <h3>Catálogo de productos</h3>
+      <div id="catalogo-productos" class="catalogo"></div>
+    </section>
+
+    <section>
+      <h3>Gráficos de rendimiento</h3>
+      <canvas id="grafico-ventas"></canvas>
+      <canvas id="grafico-stock"></canvas>
+    </section>
+  </div>
+
+  <!-- Panel trabajador -->
+  <div id="worker-panel" class="hidden panel">
+    <h2>Panel de trabajador</h2>
+    <button onclick="logout()">Cerrar sesión</button>
+    <div id="contenido-trabajadores"></div>
+
+    <section>
+      <h3>Buscar producto</h3>
+      <input id="busqueda" placeholder="Buscar por nombre o categoría" oninput="buscarProducto()">
+    </section>
+
+    <section>
+      <h3>Registrar venta</h3>
+      <select id="venta-producto"></select>
+      <input id="venta-cantidad" type="number" placeholder="Cantidad">
+      <button onclick="registrarVenta()">Registrar venta</button>
+    </section>
+
+    <section>
+      <h3>Catálogo disponible</h3>
+      <div id="catalogo-productos" class="catalogo"></div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+<section>
+  <h3>Catálogo de productos</h3>
+  <button onclick="eliminarProductosSinStock()">🗑 Eliminar productos sin stock</button> <!-- NUEVO BOTÓN -->
+  <div id="catalogo-productos" class="catalogo"></div>
+</section>
+<section>
+  <h3>Gestión individual de productos</h3>
+  <div id="tabla-productos"></div>
+</section>
